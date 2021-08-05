@@ -7,6 +7,8 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 
+import java.util.Arrays;
+
 public class MyMqttCallback implements MqttCallback {
     public static void main(String[] args) {
 
@@ -21,7 +23,8 @@ public class MyMqttCallback implements MqttCallback {
     public void messageArrived(String s, MqttMessage mqttMessage) throws Exception {
         System.out.println(s + "  "+ mqttMessage);
 
-       // MqttTest_01.ledswap(mqttMessage);
+        //if (Arrays.equals(mqttMessage.getPayload(), "TOGGLE".getBytes()))
+            MqttTest_01.ledswap(mqttMessage);
 
     }
 
