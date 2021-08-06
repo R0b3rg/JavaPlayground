@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="maven-antrun-" default="main">
   <target name="main">
-    <property name="remote.run.jvmargs" value="" />
-    <property name="target.run.as.module" value="true" />
     <property name="local.dist.dir" value="C:\Users\dasd\RpiStuff\Projekt1\JavaPlayground\target" />
     <property name="remote.runtime.encoding" value="UTF-8" />
     <property name="dist.jar.name" value="JavaPlayground" />
-    <ant antfile="antrun/build.xml" target="run-remote" />
+    <ant antfile="antrun/build.xml" target="build-remote" />
   </target>
 </project>

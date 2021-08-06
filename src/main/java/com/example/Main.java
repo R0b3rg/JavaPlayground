@@ -14,11 +14,6 @@ import com.pi4j.util.Console;
 import java.lang.reflect.InvocationTargetException;
 
 
-
-/**
- *
- * @author luca
- */
 public class Main {
 
     private static final int PIN_LED = 22; // PIN 15 = BCM 22

@@ -6,8 +6,7 @@ module com.example.JavaPlayground {
     requires com.pi4j.plugin.pigpio;
     requires com.pi4j.library.pigpio;
     requires org.eclipse.paho.client.mqttv3;
-
-    uses com.pi4j.extension.Extension;
+    requires diozero.core;
     uses com.pi4j.provider.Provider;
 
     // allow access to classes in the following namespaces for Pi4J annotation processing
