@@ -24,9 +24,11 @@ public class Main {
      */
     public static void main(String[] args) throws Exception {
 
-        new MqttTest_01().main(args);
+        //new MqttTest_01().main(args);
+        new SensorSub().main(args);
+/*
 
-       /* console.box("Hello Rasbian world !");
+       console.box("Hello Rasbian world !");
         Context pi4j = null;
 
         try {
@@ -43,8 +45,8 @@ public class Main {
             }
         }*/
     }
-
-    /*private void run(Context pi4j) throws Exception {
+/*
+    private void run(Context pi4j) throws Exception {
         Platforms platforms = pi4j.platforms();
 
         console.box("Pi4J PLATFORMS");

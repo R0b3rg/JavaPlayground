@@ -3,8 +3,6 @@ package com.example;
 import com.pi4j.Pi4J;
 import com.pi4j.context.Context;
 import com.pi4j.io.gpio.digital.*;
-import com.pi4j.plugin.pigpio.provider.gpio.digital.PiGpioDigitalInput;
-import com.pi4j.plugin.pigpio.provider.gpio.digital.PiGpioDigitalInputProvider;
 import org.eclipse.paho.client.mqttv3.*;
 
 
