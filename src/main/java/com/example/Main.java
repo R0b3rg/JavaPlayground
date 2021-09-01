@@ -24,6 +24,9 @@ public class Main {
      */
     public static void main(String[] args) throws Exception {
 
+        Sensor button01 = new Sensor("sensor01", new String[]{"akt01", "akt02"});
+
+
         //new MqttTest_01().main(args);
         new SensorSub().main(args);
 /*
