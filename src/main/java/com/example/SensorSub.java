@@ -19,6 +19,11 @@ public class SensorSub{
 
     public void main(String[] args) throws MqttException {
 
+
+        updateSensorSub();
+    }
+
+    public void updateSensorSub () throws MqttException{
         SensorSubCallback mycallback = new SensorSubCallback();
         sub.setCallback(mycallback);
 
@@ -26,10 +31,10 @@ public class SensorSub{
         token.waitForCompletion();
 
         sub.subscribe("/sensor",0);
-        sub.subscribe("/sensor/sen01",0);
-
-
-
+        //folge dem topic von jedem Sensor aus der Sensorliste
+        for(int i = 0; i < Main.getListSize();i++){
+            sub.subscribe("/sensor/" + Main.getSensorname(i),0);
+        }
     }
     public static void publishToAkteur (String akteur, String toggle){
         try{

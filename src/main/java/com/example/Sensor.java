@@ -10,8 +10,6 @@ public class Sensor {
     public Sensor(String name,String[] akteure){
         name = this.name;
         akteure =this.akteure;
-
-
     }
 
 
@@ -35,17 +33,16 @@ public class Sensor {
         this.akteure = new String[] {};
     }
     public static void main(String[] args) {
-
     }
 
-    public void Toggle(){
+    public void toggle(){
         int i = this.akteure.length;
         for (int j = 0; j<=i;j++){
             SensorSub.publishToAkteur(this.akteure[j],"toogle");
         }
     }
-    public void Toggle(int zahl){
+
+    public void toggle(int zahl){
         //Toggle Funktion für unterschiedliche Sensoren überladen
     }
-
 }

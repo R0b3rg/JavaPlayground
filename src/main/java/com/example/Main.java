@@ -12,9 +12,13 @@ import com.pi4j.io.gpio.digital.DigitalState;
 import com.pi4j.platform.Platforms;
 import com.pi4j.util.Console;
 import java.lang.reflect.InvocationTargetException;
+import java.util.*;
 
 
 public class Main {
+
+     static List<Sensor> sensorList = new ArrayList<Sensor>();
+
 
     private static final int PIN_LED = 22; // PIN 15 = BCM 22
     private static final Console console = new Console();
@@ -22,62 +26,35 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws Exception {
+    public void main(String[] args) throws Exception {
 
-        Sensor button01 = new Sensor("sensor01", new String[]{"akt01", "akt02"});
+        Sensor sensor01 = new Sensor("sensor01", new String[]{"akt01", "akt02"});
 
+        sensorList.add(sensor01);
 
         //new MqttTest_01().main(args);
         new SensorSub().main(args);
-/*
-
-       console.box("Hello Rasbian world !");
-        Context pi4j = null;
-
-        try {
-            pi4j = Pi4J.newAutoContext();
-            new Main().run(pi4j);
-        } catch (InvocationTargetException e) {
-            console.println("Error: " + e.getTargetException().getMessage());
-        } catch (Exception e) {
-            console.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            if (pi4j != null) {
-                pi4j.shutdown();
-            }
-        }*/
     }
-/*
-    private void run(Context pi4j) throws Exception {
-        Platforms platforms = pi4j.platforms();
 
-        console.box("Pi4J PLATFORMS");
-        console.println();
-        platforms.describe().print(System.out);
-        console.println();
+    public static int getListSize(){
+        return sensorList.size();
+    }
 
-        var ledConfig = DigitalOutput.newConfigBuilder(pi4j)
-                        .id("led")
-                        .name("LED Flasher")
-                        .address(PIN_LED)
-                        .shutdown(DigitalState.LOW)
-                        .initial(DigitalState.LOW)
-                        .provider("pigpio-digital-output");
+    public static String getSensorname(int position){
+        return sensorList.get(position).name;
+    }
 
-        var led = pi4j.create(ledConfig);
-        int counter = 0;
-        while (counter < 50) {
-            if (led.equals(DigitalState.HIGH)) {
-                led.low();
-                System.out.println("low");
-            } else {
-                led.high();
-                System.out.println("high");
+
+    //Todo: Kann man generics nutzen um den msg in form von verschiedenen Datentypen zu übermitteln alternativ die Funktion überladen,oder ein Format für Sensorantworten festlegen
+    public static void sensorActivate (String path, int msg){
+        //path splitten sensor/sensorname
+        String sensorname = path.substring(6);
+        for(int i = 0; i < sensorList.size();i++){
+            if(sensorList.get(i).name.equals(sensorname)){
+                sensorList.get(i).toggle(msg);
             }
-            Thread.sleep(500);
-            counter++;
         }
-    }*/
+    }
+
 
 }

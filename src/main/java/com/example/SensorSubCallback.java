@@ -18,9 +18,14 @@ public class SensorSubCallback implements MqttCallback{
     public void messageArrived(String s, MqttMessage mqttMessage) throws Exception {
 
 
+
+
         // Jerder Sensor besitzt eigenes Topic. Wenn ein Sensor einen Imput übermittelt wird die passende Funktion aufgerufen
         switch (s){
             case "sensor/sen01":
+                Main.sensorActivate(s,1234);
+                //passenden Sensor mit parameter ansprechen passende toggle funktion wird ausgeführt
+                // buttonsensor01.toggle(s)
 
                 break;
             case "sensor/sen02":
@@ -31,6 +36,8 @@ public class SensorSubCallback implements MqttCallback{
                 break;
 
         }
+
+
         if(s.equals("sensor/sen01")){
             if(mqttMessage.equals("akt"))
             System.out.println(mqttMessage);
